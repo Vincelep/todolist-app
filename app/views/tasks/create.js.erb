@@ -1,0 +1,3 @@
+// document.getElementById('<%= @category.id %>').querySelectorAll('ul')[0].insertAdjacentHTML("beforeend", "<%= j render 'task', task: @task %>");
+
+const $newEntry = $("<%= j render 'task', task: @task %>").appendTo("#<%= @category.id %> ul").hide().slideDown(200)

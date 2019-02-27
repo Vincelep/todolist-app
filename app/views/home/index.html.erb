@@ -1,21 +1,22 @@
 <h1 class="text-center mb-4">Welcome to my todolist app</h1>
 <%= render 'layouts/task_form'  %>
 <div class="container">
-  <ul>
-  <% @categories.each do  |category|%>
-  <li><%= category.title  %></li>
-  <div class="card">
-    <ul>
-      <% category.tasks.each do |task|  %>
-      <li>
-        <%= task.title  %>
-        <% unless task.deadline.nil? %>
-          , to read: <%= task.deadline.strftime('%D')  %>
+  <ul id="insert_js">
+  <% @categories.each_with_index do  |category, i|%>
+    <li class="tab_link"><%= category.title  %></li>
+    <div class="card tab_content"  id="<%= category.id %>">
+      <ul>
+        <% category.tasks.each do |task|  %>
+        <li>
+           <input type="checkbox" name="checkbox<%= task.category.id %>">
+          <%= task.title  %>
+          <% unless task.deadline.nil? %>
+            , to read: <%= task.deadline.strftime('%D')  %>
+          <% end %>
+        </li>
         <% end %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
   <% end %>
   </ul>
 </div>
